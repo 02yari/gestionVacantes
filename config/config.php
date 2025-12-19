@@ -7,10 +7,6 @@ define('DB_NAME', 'proyecto_vacantes'); // <-- aquí
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// ================================
-// URL BASE DEL PROYECTO
-// ================================
-define('BASE_URL', '/proyecto_vacantes');
 
 // ================================
 // FUNCIÓN DE CONEXIÓN GLOBAL

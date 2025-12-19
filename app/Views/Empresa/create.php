@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Solo usuarios con rol 'empresa'
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'empresa') {
-    header("Location: ../../app/controllers/AuthController.php?action=login");
+    header("Location: /proyecto_vacantes/app/controllers/AuthController.php?action=login");
     exit;
 }
 
@@ -19,6 +19,8 @@ unset($_SESSION['error']);
 <head>
     <meta charset="UTF-8">
     <title>Bienvenida a la Plataforma</title>
+
+    <!-- CSS ABSOLUTO -->
     <link rel="stylesheet" href="/proyecto_vacantes/public/css/form_empresa.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -35,8 +37,11 @@ unset($_SESSION['error']);
     <?php endif; ?>
 
     <div class="form-contract-container">
-        <form class="empresa-form" method="POST" action="/proyecto_vacantes/app/controllers/EmpresaController.php?action=store">
+        <form class="empresa-form" method="POST"
+              action="/proyecto_vacantes/app/controllers/EmpresaController.php?action=store">
+
             <h2>Datos de la Empresa</h2>
+
             <label>Nombre de la Empresa</label>
             <input type="text" name="nombre_empresa" required>
 
@@ -78,7 +83,9 @@ unset($_SESSION['error']);
                 </label>
             </div>
 
-            <button type="submit" class="btn-submit">Completar Registro y Acceder</button>
+            <button type="submit" class="btn-submit">
+                Completar Registro y Acceder
+            </button>
         </form>
     </div>
 </div>

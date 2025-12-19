@@ -23,8 +23,7 @@ class Usuario {
                 ':tipo' => 'normal'
             ]);
         } catch (PDOException $e) {
-            // Detectar si es error de clave duplicada
-            if ($e->getCode() == 23000) { // 23000 = violación de clave única
+            if ($e->getCode() == 23000) {
                 return "duplicate";
             }
             return false;
@@ -43,5 +42,4 @@ class Usuario {
         }
         return false;
     }
-
 }

@@ -5,7 +5,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../../config/config.php';
- // Esto define BASE_URL
 
 // Iniciar sesión si no está activa
 if (session_status() === PHP_SESSION_NONE) {
@@ -14,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Solo usuarios con rol 'empresa'
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'empresa') {
-    header("Location: ../../app/controllers/AuthController.php?action=login");
+    header("Location: /proyecto_vacantes/app/controllers/AuthController.php?action=login");
     exit;
 }
 
@@ -25,11 +24,10 @@ $nombre = $_SESSION['usuario']['nombre'] ?? 'Empresa';
 <head>
     <meta charset="UTF-8">
     <title>Panel Empresa</title>
-    <!-- Usar tu CSS actual -->
-    <base href="<?= BASE_URL ?>/">
-    <link rel="stylesheet" href="/proyecto_vacantes/public/css/empresa.css?v=1">
 
-
+    <!-- CSS ABSOLUTO ✔ -->
+    <link rel="stylesheet" href="/proyecto_vacantes/public/css/empresa.css">
+    
 </head>
 <body>
 
@@ -53,7 +51,9 @@ $nombre = $_SESSION['usuario']['nombre'] ?? 'Empresa';
         <a href="#">Publicar Vacante</a>
         <a href="#">Mis Vacantes</a>
         <a href="#">Ver Facturas</a>
-        <a href="/proyecto_vacantes/app/controllers/AuthController.php?action=logout">Cerrar sesión</a>
+        <a href="/proyecto_vacantes/app/controllers/AuthController.php?action=logout">
+            Cerrar sesión
+        </a>
     </nav>
 </header>
 

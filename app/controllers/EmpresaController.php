@@ -1,15 +1,12 @@
 <?php
-require_once '../../config/config.php';
+require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../models/Empresa.php';
-require_once __DIR__ . '/../Views/Empresa/create.php';
-require_once __DIR__ . '/../views/Empresa/index.php';
-
 
 session_start();
 
 // Asegurarse de que el usuario esté logueado
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'empresa') {
-    header("Location: ../../app/controllers/AuthController.php?action=login");
+    header("Location: " . BASE_URL . "/app/controllers/AuthController.php?action=login");
     exit;
 }
 
@@ -23,7 +20,7 @@ switch ($action) {
         $empresaExistente = $empresaModel->obtenerPorUsuario($_SESSION['usuario']['id']);
         if ($empresaExistente) {
             $_SESSION['error'] = "Ya existe una empresa registrada con este usuario.";
-            header("Location: EmpresaController.php?action=dashboard");
+            header("Location: " . BASE_URL . "/app/controllers/EmpresaController.php?action=dashboard");
             exit;
         }
 
@@ -40,7 +37,7 @@ switch ($action) {
             $empresaExistente = $empresaModel->obtenerPorUsuario($usuario_id);
             if ($empresaExistente) {
                 $_SESSION['error'] = "Ya existe una empresa registrada con este usuario.";
-                header("Location: EmpresaController.php?action=dashboard");
+                header("Location: " . BASE_URL . "/app/controllers/EmpresaController.php?action=dashboard");
                 exit;
             }
 
@@ -56,20 +53,28 @@ switch ($action) {
             // Validar campos
             if (!$nombre_empresa || !$tipo_empresa || !$direccion || !$telefono || !$email || !$ruc || !$acepto_contrato) {
                 $_SESSION['error'] = "Por favor complete todos los campos y acepte el contrato.";
-                header("Location: EmpresaController.php?action=create");
+                header("Location: " . BASE_URL . "/app/controllers/EmpresaController.php?action=create");
                 exit;
             }
 
             // Crear empresa
-            $resultado = $empresaModel->crear($usuario_id, $nombre_empresa, $tipo_empresa, $direccion, $telefono, $email, $ruc);
+            $resultado = $empresaModel->crear(
+                $usuario_id,
+                $nombre_empresa,
+                $tipo_empresa,
+                $direccion,
+                $telefono,
+                $email,
+                $ruc
+            );
 
             if ($resultado) {
                 $_SESSION['success'] = "Empresa registrada correctamente.";
-                header("Location: EmpresaController.php?action=dashboard");
+                header("Location: " . BASE_URL . "/app/controllers/EmpresaController.php?action=dashboard");
                 exit;
             } else {
                 $_SESSION['error'] = "Error al registrar la empresa.";
-                header("Location: EmpresaController.php?action=create");
+                header("Location: " . BASE_URL . "/app/controllers/EmpresaController.php?action=create");
                 exit;
             }
         }
@@ -82,7 +87,7 @@ switch ($action) {
 
         if (!$empresa) {
             // Si no hay empresa registrada, enviamos a create
-            header("Location: EmpresaController.php?action=create");
+            header("Location: " . BASE_URL . "/app/controllers/EmpresaController.php?action=create");
             exit;
         }
 

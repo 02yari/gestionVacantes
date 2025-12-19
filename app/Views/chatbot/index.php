@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__ . '/../../controllers/ChatbotController.php';
-
 ?>
-<link rel="stylesheet" href="../../public/css/chatbot.css">
+
+<!-- RUTA ABSOLUTA CSS -->
+<link rel="stylesheet" href="/proyecto_vacantes/public/css/chatbot.css">
 
 <h2>Vista Chatbot</h2>
 <p>chatbot</p>
-<a href="../../index.php">Volver al Inicio</a>
 
+<!-- RUTA ABSOLUTA -->
+<a href="/proyecto_vacantes/index.php">Volver al Inicio</a>

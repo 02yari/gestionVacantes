@@ -1,9 +1,10 @@
+<?php require_once __DIR__ . '/config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Consultores Chiriquí | Plataforma de Vacantes</title>
-    <link rel="stylesheet" href="public/css/index.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/index.css">
 </head>
 <body>
 
@@ -16,11 +17,10 @@
         </div>
 
         <nav class="menu">
-            <a href="app/Views/Auth/login.php">Empresa</a>
-            <a href="app/Views/Auth/login.php">Publicar Vacante</a>
-            <a href="app/Views/Auth/login.php">Consultora</a>
-            <a href="app/Views/Auth/login.php">Chatbot</a>
-
+            <a href="<?= BASE_URL ?>/app/views/Auth/login.php">Empresa</a>
+            <a href="<?= BASE_URL ?>/app/views/Auth/login.php">Publicar Vacante</a>
+            <a href="<?= BASE_URL ?>/app/views/Auth/login.php">Consultora</a>
+            <a href="<?= BASE_URL ?>/app/views/Auth/login.php">Chatbot</a>
         </nav>
     </div>
 </header>
@@ -35,10 +35,10 @@
         </p>
 
         <div class="hero-actions">
-            <a href="app/controllers/VacanteController.php" class="btn btn-main">
+            <a href="<?= BASE_URL ?>/app/controllers/VacanteController.php" class="btn btn-main">
                 Explorar Vacantes
             </a>
-             <a href="app/Views/Auth/login.php" class="btn btn-outline">
+            <a href="<?= BASE_URL ?>/app/views/Auth/login.php" class="btn btn-outline">
                 Publicar Vacante
             </a>
         </div>
@@ -86,7 +86,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-    <p>© <?php echo date("Y"); ?> Consultores Chiriquí, S.A.</p>
+    <p>© <?= date("Y") ?> Consultores Chiriquí, S.A.</p>
     <span>Proyecto Académico – Plataforma de Gestión de Vacantes</span>
 </footer>
 

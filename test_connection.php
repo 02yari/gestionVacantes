@@ -1,11 +1,11 @@
 <?php
 // test_connection.php
-require_once 'config/config.php';  // Incluye la configuración
+require_once __DIR__ . '/config/config.php';  // Incluye la configuración desde la raíz del proyecto
 
 // Crear conexión PDO
 try {
     $conexion = new PDO(
-        "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8",
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8",
         DB_USER,
         DB_PASS
     );

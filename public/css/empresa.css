@@ -1,137 +1,84 @@
-/* RESET Y TIPOGRAFÍA */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* RESET BÁSICO */
+* {
     margin: 0;
     padding: 0;
-    background: #f0f4f8;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
     color: #333;
 }
 
-/* CONTENEDOR PRINCIPAL */
-.welcome-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 40px auto;
-    gap: 30px;
-}
-
-/* PANEL DE BIENVENIDA */
-.welcome-panel {
-    background: #fff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 800px;
-}
-
-.welcome-panel h1 {
-    color: #004085;
-    margin-bottom: 20px;
-}
-
-.welcome-panel p {
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* PANEL DE FORMULARIO */
-.form-panel {
-    background: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 600px;
-}
-
-.form-panel h2 {
-    color: #004085;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* GRUPOS DE FORMULARIO */
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-/* CONTRATO DIGITAL */
-.contrato {
-    background: #e9f7fe;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: #004085;
-}
-
-/* BOTÓN PRINCIPAL */
-.btn-submit {
-    width: 100%;
-    padding: 15px;
-    background: #007BFF;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.btn-submit:hover {
-    background: #0056b3;
-}
-
-/* MENSAJES DE ERROR */
-.error-message {
-    background: #ffdddd;
-    color: #a94442;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    text-align: center;
-}
+/* ALERTAS */
 .alert {
     padding: 15px;
-    margin: 15px 0;
-    border-radius: 5px;
+    margin: 20px;
+    border-radius: 6px;
     font-weight: bold;
-    text-align: center;
 }
 
 .alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background-color: #ffe0e0;
+    color: #a30000;
 }
 
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background-color: #e0ffe6;
+    color: #006b2e;
+}
+
+/* HEADER */
+.header {
+    background-color: #1f2937;
+    color: white;
+    padding: 20px;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+}
+
+.header nav {
+    display: flex;
+    gap: 15px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN */
+main {
+    padding: 30px;
+}
+
+/* DASHBOARD */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    color: #1f2937;
+}
+
+.card p {
+    color: #555;
 }
