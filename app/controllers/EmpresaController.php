@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/config.php';
 require_once __DIR__ . '/../models/Empresa.php';
+require_once __DIR__ . '/../Views/Empresa/create.php';
 require_once __DIR__ . '/../views/Empresa/index.php';
 
 
