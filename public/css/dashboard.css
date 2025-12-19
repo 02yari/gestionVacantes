@@ -8,7 +8,7 @@
 
 /* HEADER */
 .header {
-    background-color: #5a6cff;
+    background: linear-gradient(135deg, #4b2cc4, #3a1fa3);
     color: #fff;
     padding: 20px;
     display: flex;
@@ -21,7 +21,7 @@
 }
 
 .header nav a {
-    color: #fff;
+    color: #ffffff;
     margin-left: 20px;
     text-decoration: none;
     font-weight: 600;
@@ -35,7 +35,7 @@
 /* MAIN */
 main {
     padding: 40px 20px;
-    background: #f9f9ff;
+    background: #f6f7fb;
     min-height: calc(100vh - 80px);
 }
 
@@ -47,22 +47,22 @@ main {
 }
 
 .card {
-    background: #fff;
+    background: #ffffff;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 28px rgba(75, 44, 196, 0.12);
     transition: 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    box-shadow: 0 16px 38px rgba(75, 44, 196, 0.2);
 }
 
 .card h2 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #5a6cff;
+    color: #3a1fa3;
 }
 
 .card p {

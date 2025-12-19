@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 19-12-2025 a las 06:15:24
+-- Tiempo de generación: 19-12-2025 a las 14:31:18
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -71,9 +71,11 @@ INSERT INTO `empresa` (`id`, `nombre`, `tipo`, `direccion`, `telefono`, `email`,
 CREATE TABLE `factura` (
   `id` int(11) NOT NULL,
   `empresa_id` int(11) NOT NULL,
+  `concepto` varchar(150) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `detalle` text DEFAULT NULL
+  `detalle` text DEFAULT NULL,
+  `estado` enum('pendiente','pagada') NOT NULL DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -114,7 +116,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `email`, `password`, `rol`, `tipo`, `estado`, `fecha_creacion`, `ultimo_login`) VALUES
 (1, 'Yarielsy Joan González', 'yarigonza0294@gmail.com', '$2y$10$f081st1e9QszvlP9ve2rxedOGM7ezTUc0oYObhQey4eZfRuyy2L2y', 'empresa', '', 1, '2025-12-19 02:35:51', NULL),
 (3, 'Yarielsy', 'joan@gmail.com', '$2y$10$Yu0M6Z4QfahFtVTGCc0EpetVN3vh1oqDnl5RW1fbSk4Y4FRsUIWnm', 'consultora', '', 1, '2025-12-19 02:36:44', NULL),
-(5, 'Yari', 'yarigonza@gmail.com', '$2y$10$mP.6srDOCNj9BJmR9Ig09O4Fi7nd5xF3jipIu0o13lRQILp5JQUe.', 'empresa', '', 1, '2025-12-19 04:06:53', NULL);
+(5, 'Yari', 'yarigonza@gmail.com', '$2y$10$mP.6srDOCNj9BJmR9Ig09O4Fi7nd5xF3jipIu0o13lRQILp5JQUe.', 'empresa', '', 1, '2025-12-19 04:06:53', NULL),
+(7, 'Capuchino', 'capu@gmail.com', '$2y$10$DW.02x0rWZZzTapHRyJPsOViBlv3KT36TzZUQOVjtd.Ppy0DTi6Mi', 'empresa', '', 1, '2025-12-19 09:53:51', NULL),
+(8, 'Eldaa', 'eldaa@gmail.com', '$2y$10$ChBv72UsY19xb.W7D87A2.4e0gsbioJ5zMNlus7ET5vAairXLR/Oq', 'empresa', '', 1, '2025-12-19 12:09:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,8 +133,19 @@ CREATE TABLE `vacante` (
   `descripcion` text DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
+  `estado` enum('activa','inactiva') NOT NULL DEFAULT 'activa',
+  `eliminado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vacante`
+--
+
+INSERT INTO `vacante` (`id`, `empresa_id`, `titulo`, `descripcion`, `fecha_inicio`, `fecha_fin`, `fecha_creacion`, `estado`, `eliminado`) VALUES
+(1, 1, 'Ama de casa', 'Limpiar la casa a diario', '2025-12-18', '2025-12-20', '2025-12-19 10:15:20', 'activa', 0),
+(2, 1, 'Niñera', 'Cuidar niño de 1 año las 24/7', '2025-12-19', '2025-12-27', '2025-12-19 13:13:07', 'activa', 0),
+(3, 1, 'Salonero', 'salonero', '2025-12-19', '2025-12-27', '2025-12-19 13:30:50', 'activa', 0);
 
 --
 -- Índices para tablas volcadas
@@ -212,13 +227,13 @@ ALTER TABLE `interaccion`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `vacante`
 --
 ALTER TABLE `vacante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -259,10 +274,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
---Alteraciones nuevas
-ALTER TABLE vacante
-ADD COLUMN estado ENUM('activa','inactiva') NOT NULL DEFAULT 'activa',
-ADD COLUMN eliminado TINYINT(1) NOT NULL DEFAULT 0;
-

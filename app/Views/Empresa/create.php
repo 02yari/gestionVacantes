@@ -69,13 +69,21 @@ unset($_SESSION['error']);
                 <p>
                     Al publicar vacantes en nuestra plataforma, se aplican las siguientes tarifas por interacción con los postulantes:
                 </p>
+                <p>
+                    En caso de mantener facturas pendientes después del límite permitido, 
+                    la empresa no podrá publicar nuevas vacantes hasta regularizar su pago.
+                </p>
+
                 <ul>
                     <li>Por cada 10 postulantes registrados: <strong>$5</strong></li>
                     <li>Por cada 50 postulantes registrados: <strong>$20</strong></li>
                     <li>Por cada 100 postulantes registrados: <strong>$35</strong></li>
+                    <li>Por cada vacante publicada  <strong>$2.50</strong></li>
+                    <li>Se permite la publicación de hasta <strong>3 vacantes</strong> sin pago inmediato; el monto correspondiente será acumulado en la factura.</li>
+
                 </ul>
                 <p>
-                    Una vez que acepte este contrato, cada vacante publicada estará sujeta a estas tarifas según la cantidad de postulantes o interacciones que reciba.
+                    Una vez que acepte este contrato, cada vacante publicada estará sujeta a estas tarifas según la cantidad de postulantes o interacciones que reciba. 
                 </p>
                 <label class="accept-contract">
                     <input type="checkbox" name="acepto_contrato" required>

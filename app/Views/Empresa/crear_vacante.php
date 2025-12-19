@@ -25,7 +25,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'empresa') {
     <p style="color:red"><?= $_SESSION['error']; unset($_SESSION['error']); ?></p>
 <?php endif; ?>
 
-<form method="POST" action="guardar_vacante.php">
+<form method="POST" action="publicar_vacante.php">
 
     <label>Título</label><br>
     <input type="text" name="titulo" required><br><br>

@@ -35,9 +35,9 @@ $vacantesActivas = $vacanteModel->obtenerActivas($empresa['id']);
 <header class="header">
     <h1>Bienvenido, <?= htmlspecialchars($nombre) ?></h1>
     <nav>
-        <a href="crear_vacante.php">Publicar Vacante</a>
-        <a href="mis_vacantes.php">Mis Vacantes</a>
-        <a href="#">Ver Facturas</a>
+        <a href="<?= BASE_URL ?>/app/views/empresa/crear_vacante.php">Publicar Vacante</a>
+        <a href="<?= BASE_URL ?>/app/views/empresa/mis_vacantes.php">Mis Vacantes</a>
+        <a href="<?= BASE_URL ?>/app/controllers/FacturaController.php">Ver Facturas</a>
         <a href="/proyecto_vacantes/app/controllers/AuthController.php?action=logout">Cerrar sesión</a>
     </nav>
 </header>
