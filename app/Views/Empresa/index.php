@@ -26,7 +26,8 @@ $nombre = $_SESSION['usuario']['nombre'] ?? 'Empresa';
     <meta charset="UTF-8">
     <title>Panel Empresa</title>
     <!-- Usar tu CSS actual -->
-    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/empresa.css">
+    <base href="<?= BASE_URL ?>/">
+    <link rel="stylesheet" href="/proyecto_vacantes/public/css/empresa.css?v=1">
 
 
 </head>
