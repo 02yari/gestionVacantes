@@ -1,0 +1,174 @@
+/* ===============================
+   LOGIN – ESTILO PROFESIONAL
+   =============================== */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a7cff, #5fd1c1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CONTENEDOR */
+.login-container {
+    background: #ffffff;
+    width: 420px;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* TITULOS */
+.login-container h2 {
+    margin: 0 0 10px;
+    color: #2c2c2c;
+    font-size: 26px;
+    text-align: center;
+}
+
+.login-container p {
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+}
+
+/* GRUPO INPUT */
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: #9a9a9a;
+    margin-bottom: 6px;
+}
+
+/* INPUTS */
+.form-group input {
+    width: 100%;
+    padding: 14px 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #6a7cff;
+    box-shadow: 0 0 0 3px rgba(106, 124, 255, 0.15);
+}
+
+/* BOTON PRINCIPAL */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #6a7cff, #5fd1c1);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* LINKS SECUNDARIOS */
+.login-links {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.login-links a {
+    display: inline-block;
+    margin: 6px 10px;
+    font-size: 14px;
+    color: #6a7cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAJE DE ERROR */
+.error-message {
+    background: #ffe5e5;
+    color: #b30000;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ANIMACION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* CONTENEDOR DE LINKS */
+.login-links {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* LINKS COMO BOTONES */
+.login-links a {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* BOTÓN CREAR CUENTA */
+.login-links a:first-child {
+    background: #f2f4ff;
+    color: #5a6cff;
+    border: 1px solid #d6dcff;
+}
+
+.login-links a:first-child:hover {
+    background: #e6ebff;
+    transform: translateY(-2px);
+}
+
+/* BOTÓN VOLVER AL INICIO */
+.login-links a:last-child {
+    background: #ffffff;
+    color: #5fd1c1;
+    border: 1px solid #bfece6;
+}
+
+.login-links a:last-child:hover {
+    background: #ecfbf9;
+    transform: translateY(-2px);
+}

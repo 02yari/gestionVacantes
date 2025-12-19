@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #2f2f2f;
+}
+
+/* ================= HEADER ================= */
+.header {
+    background: linear-gradient(135deg, #5f27cd, #341f97);
+    color: #fff;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.branding h1 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.branding span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.menu a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: #feca57;
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* ================= HERO ================= */
+.hero {
+    background: linear-gradient(120deg, #f1f4ff, #ffffff);
+    padding: 100px 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+    color: #341f97;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 19px;
+    color: #555;
+    margin-bottom: 45px;
+}
+
+/* ================= BOTONES ================= */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 16px 42px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Botón principal */
+.btn-main {
+    background: linear-gradient(135deg, #ff6b6b, #ee5253);
+    color: #fff;
+    box-shadow: 0 15px 35px rgba(238, 82, 83, 0.4);
+}
+
+.btn-main:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(238, 82, 83, 0.55);
+}
+
+/* Botón secundario */
+.btn-outline {
+    border: 2px solid #341f97;
+    color: #341f97;
+    background: #fff;
+}
+
+.btn-outline:hover {
+    background: #341f97;
+    color: #fff;
+    transform: translateY(-6px) scale(1.03);
+}
+
+/* ================= BENEFICIOS ================= */
+.benefits {
+    max-width: 1200px;
+    margin: auto;
+    padding: 90px 20px;
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.benefit-card {
+    background: #ffffff;
+    width: 320px;
+    padding: 40px 35px;
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+    position: relative;
+}
+
+.benefit-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #ff9f43, #feca57);
+    border-radius: 22px 22px 0 0;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+}
+
+.benefit-card h3 {
+    color: #341f97;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* ================= ABOUT ================= */
+.about {
+    background: linear-gradient(135deg, #fdf2ff, #eef1ff);
+    padding: 90px 20px;
+}
+
+.about-text {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.about h2 {
+    color: #5f27cd;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #1e1e2f;
+    color: #ccc;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+}
+
+.footer span {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    opacity: 0.8;
+}
