@@ -1,0 +1,164 @@
+/* ===============================
+   RESET BÁSICO
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===============================
+   BODY
+================================ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #111827;
+}
+
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================ */
+.contrato-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 720px;
+    padding: 40px 45px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===============================
+   TÍTULOS
+================================ */
+.contrato-container h2 {
+    font-size: 26px;
+    color: #1f2933;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.contrato-container p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: 14px;
+}
+
+/* ===============================
+   FORMULARIO
+================================ */
+.contrato-container form {
+    margin-top: 25px;
+}
+
+/* ===============================
+   LABELS
+================================ */
+.contrato-container label {
+    display: block;
+    font-weight: 600;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    color: #1f2937;
+}
+
+/* ===============================
+   INPUTS
+================================ */
+.contrato-container input[type="text"],
+.contrato-container input[type="email"],
+.contrato-container input[type="number"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.contrato-container input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ===============================
+   CHECKBOX
+================================ */
+.contrato-container .checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+}
+
+.contrato-container .checkbox input {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.contrato-container .checkbox label {
+    font-weight: normal;
+    margin: 0;
+    color: #374151;
+}
+
+/* ===============================
+   BOTÓN
+================================ */
+.btn-aceptar {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.btn-aceptar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    opacity: 0.95;
+}
+
+.btn-aceptar:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+}
+
+/* ===============================
+   ANIMACIÓN
+================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    .contrato-container {
+        padding: 30px 25px;
+    }
+
+    .contrato-container h2 {
+        font-size: 22px;
+    }
+}

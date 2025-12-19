@@ -67,9 +67,9 @@ function procesarLogin() {
     $usuario = $usuarioModel->login($correo, $password);
 
     if ($usuario) {
-        session_start();
         $_SESSION['usuario'] = $usuario;
 
+        // ===== EMPRESA =====
         if ($usuario['rol'] === 'empresa') {
             require_once __DIR__ . '/../models/Empresa.php';
             $empresaModel = new Empresa();
@@ -81,13 +81,17 @@ function procesarLogin() {
                 header("Location: /proyecto_vacantes/app/Views/Empresa/create.php");
             }
             exit;
-        } else if ($usuario['rol'] === 'consultora') {
+        }
+
+        // ===== CONSULTORA =====
+       if ($usuario['rol'] === 'consultora') {
             header("Location: /proyecto_vacantes/app/Views/Consultora/index.php");
             exit;
         }
+
     }
 
     $_SESSION['error'] = "Correo o contraseña incorrectos.";
-    header("Location: /proyecto_vacantes/app/Views/Auth/login.php");
+    header("Location: /proyecto_vacantes/app/controllers/AuthController.php?action=login");
     exit;
 }
