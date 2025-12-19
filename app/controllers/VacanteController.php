@@ -1,5 +1,10 @@
 <?php
-require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../models/Vacante.php';
 
-// Mostrar la vista
-require_once __DIR__ . '/../views/Vacante/index.php';
+$vacanteModel = new Vacante();
+
+// Obtener vacantes activas (públicas)
+$vacantes = $vacanteModel->obtenerVacantesActivas();
+
+// Cargar vista
+require_once __DIR__ . '/../views/Vacantes/listar.php';
