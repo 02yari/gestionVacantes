@@ -10,7 +10,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'empresa') {
     exit;
 }
 
-/* VALIDAR CAMPOS */
 if (
     empty($_POST['titulo']) ||
     empty($_POST['descripcion']) ||
@@ -24,13 +23,14 @@ if (
 
 $usuario_id = $_SESSION['usuario']['id'];
 
-/* CONEXIÓN */
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($conn->connect_error) {
     die("Error de conexión");
 }
 
-/* OBTENER EMPRESA */
+/* ================================
+   OBTENER EMPRESA
+================================ */
 $stmt = $conn->prepare("SELECT id FROM empresa WHERE usuario_id = ?");
 $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
@@ -44,7 +44,9 @@ if ($result->num_rows === 0) {
 
 $empresa_id = $result->fetch_assoc()['id'];
 
-/* VERIFICAR FACTURAS PENDIENTES */
+/* ================================
+   VERIFICAR FACTURAS PENDIENTES
+================================ */
 $stmt = $conn->prepare("
     SELECT COUNT(*) AS pendientes
     FROM factura
@@ -55,36 +57,60 @@ $stmt->execute();
 $pendientes = $stmt->get_result()->fetch_assoc()['pendientes'];
 
 if ($pendientes > 0) {
-    $_SESSION['error'] = "Tiene facturas pendientes. Debe pagar antes de publicar nuevas vacantes.";
+    $_SESSION['error'] = "Tiene facturas pendientes. Debe pagar antes de publicar más vacantes.";
     header("Location: crear_vacante.php");
     exit;
 }
 
-/* CONTAR VACANTES EXISTENTES */
-$stmt = $conn->prepare("SELECT COUNT(*) AS total FROM vacante WHERE empresa_id = ?");
+/* ================================
+   CONTAR VACANTES DE LA EMPRESA
+================================ */
+$stmt = $conn->prepare("
+    SELECT COUNT(*) AS total 
+    FROM vacante 
+    WHERE empresa_id = ?
+");
 $stmt->bind_param("i", $empresa_id);
 $stmt->execute();
 $totalVacantes = $stmt->get_result()->fetch_assoc()['total'];
 
-/* SI SUPERA LAS 3 GRATIS → CREAR FACTURA */
-if ($totalVacantes >= 3) {
+/* ================================
+   SI PASA DE 3 → CREAR FACTURA
+================================ */
+$MAX_GRATIS = 2;
+if ($totalVacantes >= $MAX_GRATIS) {
 
-    $concepto = "Publicación de vacante";
-    $detalle  = "Cargo por publicación adicional de vacante en la plataforma";
+    $concepto = "Publicación de vacante adicional";
     $total    = 2.50;
+    $detalle  = "Cargo por publicación adicional de vacante";
+    $fecha    = date('Y-m-d');
+    $estado   = "pendiente";
 
     $stmt = $conn->prepare("
         INSERT INTO factura (empresa_id, concepto, total, fecha, detalle, estado)
-        VALUES (?, ?, ?, NOW(), ?, 'pendiente')
+        VALUES (?, ?, ?, ?, ?, ?)
     ");
-    $stmt->bind_param("isds", $empresa_id, $concepto, $total, $detalle);
+
+    $stmt->bind_param(
+        "isdsss",
+        $empresa_id,
+        $concepto,
+        $total,
+        $fecha,
+        $detalle,
+        $estado
+    );
+
     $stmt->execute();
 }
 
-/* INSERTAR VACANTE */
+/* ================================
+   INSERTAR VACANTE
+================================ */
 $stmt = $conn->prepare("
-    INSERT INTO vacante (empresa_id, titulo, descripcion, fecha_inicio, fecha_fin)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO vacante 
+    (empresa_id, titulo, descripcion, fecha_inicio, fecha_fin, fecha_creacion)
+    VALUES (?, ?, ?, ?, ?, NOW())
 ");
 
 $stmt->bind_param(
