@@ -61,4 +61,38 @@ class Factura {
 
         return $stmt->fetchColumn() > 0;
     }
+
+    // ================================
+    // OBTENER FACTURA POR ID
+    // ================================
+    public function obtenerPorId($factura_id, $empresa_id) {
+        $sql = "
+            SELECT *
+            FROM factura
+            WHERE id = :id AND empresa_id = :empresa_id
+            LIMIT 1
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':id' => $factura_id,
+            ':empresa_id' => $empresa_id
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // ================================
+    // PAGAR FACTURA
+    // ================================
+    public function pagar($factura_id) {
+        $sql = "
+            UPDATE factura
+            SET estado = 'pagada'
+            WHERE id = :id
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([':id' => $factura_id]);
+    }
 }

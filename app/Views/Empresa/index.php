@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../../../config/config.php';
 require_once __DIR__ . '/../../Models/Empresa.php';
 require_once __DIR__ . '/../../Models/Vacante.php';
+require_once __DIR__ . '/../../Models/Factura.php';
+
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -22,7 +24,11 @@ $vacanteModel = new Vacante();
 
 $empresa = $empresaModel->obtenerPorUsuario($_SESSION['usuario']['id']);
 $vacantesActivas = $vacanteModel->obtenerActivas($empresa['id']);
+$facturaModel = new Factura();
+$facturasPendientes = $facturaModel->tieneDeuda($empresa['id']) ? 1 : 0;
+
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -69,8 +75,20 @@ $vacantesActivas = $vacanteModel->obtenerActivas($empresa['id']);
 
         <div class="card">
             <h2>Facturación</h2>
-            <p>Gestiona tus facturas y pagos.</p>
+
+            <?php if ($facturasPendientes > 0): ?>
+                <p style="color:red;font-weight:bold;">
+                    Tienes <?= $facturasPendientes ?> factura(s) pendiente(s)
+                </p>
+            <?php else: ?>
+                <p>No tienes facturas pendientes</p>
+            <?php endif; ?>
+
+            <a href="<?= BASE_URL ?>/app/controllers/FacturaController.php">
+                Ver facturas
+            </a>
         </div>
+
 
     </section>
 </main>

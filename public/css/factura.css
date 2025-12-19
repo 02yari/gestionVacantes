@@ -1,3 +1,126 @@
-body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
-h2 { color: #3f51b5; }
-a { color: #f44336; text-decoration: none; }
+/* ===============================
+   TABLA DE FACTURAS
+================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* Cabecera */
+table thead {
+    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+}
+
+table thead th {
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+/* Filas */
+table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.2s ease;
+}
+
+table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Celdas */
+table tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #374151;
+}
+
+/* Última fila sin borde */
+table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Estados */
+.estado-pagada {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.estado-pendiente {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+/* Responsive pequeño (opcional) */
+@media (max-width: 768px) {
+    table {
+        font-size: 13px;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 14px;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+    }
+}
+/* ===============================
+   AVISO FACTURA PENDIENTE
+================================ */
+.factura-alerta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff7ed;
+    border-left: 6px solid #f97316;
+    color: #9a3412;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.factura-alerta strong {
+    font-size: 16px;
+}
+
+/* Botón pagar */
+.factura-alerta a {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.factura-alerta a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(249, 115, 22, 0.4);
+}

@@ -36,12 +36,6 @@ $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows === 0) {
-    $_SESSION['error'] = "Empresa no encontrada.";
-    header("Location: crear_vacante.php");
-    exit;
-}
-
 $empresa_id = $result->fetch_assoc()['id'];
 
 /* ================================
@@ -74,12 +68,21 @@ $stmt->bind_param("i", $empresa_id);
 $stmt->execute();
 $totalVacantes = $stmt->get_result()->fetch_assoc()['total'];
 
-/* ================================
-   SI PASA DE 3 → CREAR FACTURA
-================================ */
 $MAX_GRATIS = 2;
+
+/* ================================
+   SI YA PASÓ EL LÍMITE GRATIS
+================================ */
 if ($totalVacantes >= $MAX_GRATIS) {
 
+    // Verificar si ya tiene una factura pendiente
+    if ($pendientes > 0) {
+        $_SESSION['error'] = "Tiene facturas pendientes. Debe pagar antes de publicar más vacantes.";
+        header("Location: crear_vacante.php");
+        exit;
+    }
+
+    // Crear nueva factura
     $concepto = "Publicación de vacante adicional";
     $total    = 2.50;
     $detalle  = "Cargo por publicación adicional de vacante";
@@ -103,6 +106,7 @@ if ($totalVacantes >= $MAX_GRATIS) {
 
     $stmt->execute();
 }
+
 
 /* ================================
    INSERTAR VACANTE
